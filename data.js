@@ -1,15 +1,16 @@
-const korisnici = [
+const users = [
     {
-        ime: 'Marija'
-        prezime: 'Petkovic',
-        godine: 28,
+        name: 'Marija',
+        lastName: 'Petkovic',
+        age: 28,
         status: 'Admin'
     },
     {
-        ime: 'Janko'
-        prezime: 'Jankovic',
-        godine: 24,
-        status: 'Korisnik'
+        name: 'Janko',
+        lastName: 'Jankovic',
+        age: 24,
+        status: 'User'
     },
-
 ]
+
+export default users
