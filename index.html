@@ -14,8 +14,6 @@
 
     <style>
         body{
-            /* background-color: #363945; */
-            /* background-color: #343148; */
             background-color: #282D3C;
 
             /* background: linear-gradient(-45deg,#23a6d5, #23d5ab, #ee7752, #e73c7e);
@@ -47,43 +45,47 @@
   
     <!-- Modal -->
     <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Add user</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter user name" id="firstName" focused>
+        <div class="modal-dialog ">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Add new user</h1>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Last Name</label>
-                    <input type="text" class="form-control"  placeholder="Enter user lastname" id="lastName">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Age</label>
-                    <input type="number" class="form-control" placeholder="Enter user age" id="age">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Status</label>
-                    <input type="text" class="form-control"  placeholder="Enter user status" id="status">
-                </div>
-            </div>
-            <div class="modal-footer">
 
-                <button type="button" class="btn btn-success text-white" id="addUser" data-bs-dismiss="modal">Add user</button>
-                <button type="button" class="btn btn-warning text-white" hidden id="updateUser" data-bs-dismiss="modal">Update user</button>
-                <button type="button" class="btn btn-danger text-white" hidden id="cancelUser" data-bs-dismiss="modal">Cancel</button>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="firstName " class="form-label text-muted">First Name</label>
+                        <input type="text" class="form-control bg-dark text-white " placeholder="Enter user name" id="firstName" focused>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label text-muted">Last Name</label>
+                        <input type="text" class="form-control bg-dark text-white "  placeholder="Enter user lastname" id="lastName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label text-muted">Age</label>
+                        <input type="number" class="form-control bg-dark text-white " placeholder="Enter user age" id="age">
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label text-muted">Status</label>
+                        <select class="form-select bg-dark text-white" id="status">
+                            <option value="" selected>Choose...</option>
+                            <option value="Admin">Admin</option>
+                            <option value="User">User</option>
+                          </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success text-white" id="addUser" data-bs-dismiss="modal">Add user</button>
+                    <button type="button" class="btn btn-warning text-white" hidden id="updateUser" data-bs-dismiss="modal">Update user</button>
+                    <button type="button" class="btn btn-danger text-white" hidden id="cancelUser" data-bs-dismiss="modal">Cancel</button>
+                </div>
             </div>
-        </div>
         </div>
     </div>
   
   
     <!-- Table -->
-    <table class="table table-dark table-bordered table-hover">
+    <table class="table table-dark table-bordered table-hover ">
         <thead>
             <tr>
             <th scope="col">Id</th>
