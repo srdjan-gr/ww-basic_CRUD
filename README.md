@@ -1,4 +1,4 @@
-# ww-basic_CRUD
+Basic_CRUD app
 
 Not too creative but effective way to practice basic CRUD operations and validations in Vanilla JS and simple design wusing Bootstrap 5 components and classes
 
