@@ -10,7 +10,10 @@ const btnAddUser = document.getElementById('addUser');
 const btnUpdateUser = document.getElementById('updateUser');
 const btnCancelUser = document.getElementById('cancelUser');
 
-const modalId = document.getElementById('exampleModal')
+const myModal = new bootstrap.Modal('#exampleModal');
+
+const myModalLabel = document.getElementById('exampleModalLabel');
+
 
 let updateIdx = null;
 
@@ -43,7 +46,6 @@ window.addEventListener('load', () => {
 // click on button addUser call createUser function
 btnAddUser.addEventListener('click', () => {
     createUser();
-    btnAddUser.setAttribute('data-bs-dismiss', 'modal');
 })
 
 // saves edited user informations
@@ -64,6 +66,8 @@ btnUpdateUser.addEventListener('click', () => {
 
             clearFields();
             readUser();
+
+            myModal.toggle()
 
         } else {
             alert('"Age" input is not a number!!!')
@@ -96,6 +100,8 @@ const clearFields = () => {
 
 const createUser = () => {
 
+    myModalLabel.innerHTML = 'Add user';
+
     if (firstName.value != '' && lastName.value != '' && status.value != '') {
 
         if (Number(age.value)) {
@@ -109,6 +115,8 @@ const createUser = () => {
 
             clearFields();
             readUser();
+
+            myModal.toggle()
 
         } else {
             alert('"Age" input is not a number!!!')
@@ -133,12 +141,14 @@ const readUser = () => {
                 <td><button class="btnCustom hoverCustom  text-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick="updateUser(${idx})"><i class="bi bi-pencil-square"></i></button></td>
                 <td><button class="btnCustom hoverCustom text-danger" onClick="deleteUser(${idx})"><i class="bi bi-trash3"></i></button></td>
             </tr>
-        `
+        `;
     });
 }
 
 
 const updateUser = (idx) => {
+
+    myModalLabel.innerHTML = 'Update user';
 
     firstName.value = users[idx].name,
         lastName.value = users[idx].lastName,
