@@ -1,3 +1,3 @@
 # ww-basic_CRUD
-websiteorkshop exercise - CRUD operation in Vanila JS
-![basic CRUD app](https://user-images.githubusercontent.com/84479630/207000613-76fbfa06-5aca-4727-bad2-e94432b5ca9b.png)
+
+![basic CRUD app 1](https://user-images.githubusercontent.com/84479630/207002672-98b3caae-0da6-4d1b-ad8b-5f4a0a409d8f.png)
