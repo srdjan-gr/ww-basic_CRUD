@@ -11,6 +11,13 @@ const users = [
         age: 24,
         status: 'User'
     },
+    {
+        name: 'Pera',
+        lastName: 'Mitic',
+        age: 56,
+        status: 'User'
+    },
 ]
 
 export default users
+

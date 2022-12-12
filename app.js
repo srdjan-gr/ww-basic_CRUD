@@ -1,4 +1,4 @@
-// import { users } from './data.js';
+// import users from './data.js';
 
 const tableBody = document.getElementById('tableBody');
 
@@ -29,7 +29,7 @@ const users = [
     },
     {
         name: 'Nemanja',
-        lastName: 'Matic',
+        lastName: 'Mitic',
         age: 32,
         status: 'User'
     },
@@ -43,22 +43,35 @@ window.addEventListener('load', () => {
 // click on button addUser call createUser function
 btnAddUser.addEventListener('click', () => {
     createUser();
+    btnAddUser.setAttribute('data-bs-dismiss', 'modal');
 })
 
 // saves edited user informations
 btnUpdateUser.addEventListener('click', () => {
 
-    users[updateIdx].name = firstName.value;
-    users[updateIdx].lastName = lastName.value;
-    users[updateIdx].age = age.value;
-    users[updateIdx].status = status.value;
+    if (firstName.value != '' && lastName.value != '' && status.value != '') {
 
-    btnUpdateUser.hidden = true;
-    btnCancelUser.hidden = true;
-    btnAddUser.hidden = false;
+        if (Number(age.value)) {
 
-    readUser();
-    clearFields();
+            users[updateIdx].name = firstName.value;
+            users[updateIdx].lastName = lastName.value;
+            users[updateIdx].age = age.value;
+            users[updateIdx].status = status.value;
+
+            btnUpdateUser.hidden = true;
+            btnCancelUser.hidden = true;
+            btnAddUser.hidden = false;
+
+            clearFields();
+            readUser();
+
+        } else {
+            alert('"Age" input is not a number!!!')
+        }
+    } else {
+        alert('All fields are required!!!')
+    }
+
 })
 
 // close modal and reset buttons display settings
@@ -83,21 +96,26 @@ const clearFields = () => {
 
 const createUser = () => {
 
-    if (firstName.value != '' && lastName.value != '' && age.value != '' && status.value != '') {
+    if (firstName.value != '' && lastName.value != '' && status.value != '') {
 
-        users.push({
-            name: firstName.value,
-            lastName: lastName.value,
-            age: age.value,
-            status: status.value
-        });
+        if (Number(age.value)) {
 
+            users.push({
+                name: firstName.value,
+                lastName: lastName.value,
+                age: age.value,
+                status: status.value
+            });
+
+            clearFields();
+            readUser();
+
+        } else {
+            alert('"Age" input is not a number!!!')
+        }
     } else {
         alert('All fields are required!!!')
     }
-    clearFields();
-    readUser();
-
 }
 
 
@@ -121,7 +139,6 @@ const readUser = () => {
 
 
 const updateUser = (idx) => {
-
 
     firstName.value = users[idx].name,
         lastName.value = users[idx].lastName,

@@ -14,10 +14,7 @@
 
     <style>
         body{
-            background-color: #282D3C;
-
-            /* background: linear-gradient(-45deg,#23a6d5, #23d5ab, #ee7752, #e73c7e);
-            background-size: 400% 400%; */
+            background-color: #1e222c;
             height: 100vh;
         }
 
@@ -34,13 +31,24 @@
             opacity: .7;
         }
 
+        input[type=number] {
+            -moz-appearance: textfield;
+            appearance: 1;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            appearance: 1;
+        }
+
     </style>
 </head>
 <body>
     
 <div class="container">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-info mt-4 text-white " data-bs-toggle="modal" data-bs-target="#exampleModal">Add user</button>
+    <button type="button" class="btn btn-info mt-4 text-white " data-bs-toggle="modal" data-bs-target="#exampleModal">Add new user</button>
     <hr>
   
     <!-- Modal -->
@@ -48,7 +56,7 @@
         <div class="modal-dialog ">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Add new user</h1>
+                    <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Add user</h1>
                 </div>
 
                 <div class="modal-body">
@@ -75,8 +83,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success text-white" id="addUser" data-bs-dismiss="modal">Add user</button>
-                    <button type="button" class="btn btn-warning text-white" hidden id="updateUser" data-bs-dismiss="modal">Update user</button>
+                    <button type="button" class="btn btn-success text-white" id="addUser" >Add user</button>
+                    <button type="button" class="btn btn-warning text-white" hidden id="updateUser" >Update user</button>
                     <button type="button" class="btn btn-danger text-white" hidden id="cancelUser" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
