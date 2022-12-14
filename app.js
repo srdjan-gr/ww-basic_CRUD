@@ -9,6 +9,8 @@ const status = document.getElementById('status');
 const btnAddUser = document.getElementById('addUser');
 const btnUpdateUser = document.getElementById('updateUser');
 const btnCancelUser = document.getElementById('cancelUser');
+const message = document.getElementById('message');
+const userCount = document.getElementById('userCount');
 
 const myModal = new bootstrap.Modal('#exampleModal');
 const myModalLabel = document.getElementById('exampleModalLabel');
@@ -38,12 +40,14 @@ let updateIdx = null;
 
 // On load read content
 window.addEventListener('load', () => {
+    showUserCount();
     readUser();
 })
 
 // click on button addUser call createUser function
 btnAddUser.addEventListener('click', () => {
     createUser();
+    showUserCount();
 })
 
 // saves edited user informations
@@ -130,8 +134,11 @@ const createUser = () => {
 
 const readUser = () => {
     tableBody.innerHTML = '';
+    message.innerHTML ='';
 
+    
     let ls = JSON.parse(localStorage.getItem('ww_basic_crud'));
+    console.log(ls)
 
     if (ls == null) {
         localStorage.setItem('ww_basic_crud', JSON.stringify(''));
@@ -154,8 +161,8 @@ const readUser = () => {
         });
 
     } else {
-        tableBody.innerHTML = `
-            <h2 class ='fs-5 mt-3'>No users to show.</h2>
+        message.innerHTML = `
+            <h2 class ='fs-5 mt-3 text-white'>No users to show.</h2>
         `;
     }
 }
@@ -190,4 +197,11 @@ const deleteUser = (idx) => {
     }
 
     readUser();
+    showUserCount();
+}
+
+const showUserCount = () => {
+    let users = JSON.parse(localStorage.getItem('ww_basic_crud'));
+
+    userCount.innerHTML = `<h3 class ='fs-6 m-0 text-white position-absolute top-50 start-50 translate-middle'>${users.length}</h3>`;
 }
