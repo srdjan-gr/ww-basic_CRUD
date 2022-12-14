@@ -15,12 +15,6 @@ const myModalLabel = document.getElementById('exampleModalLabel');
 
 let updateIdx = null;
 
-// Inicialize local storage to prevent forEach error in reading from LS on page load
-let ls = localStorage.getItem('ww_basic_crud');
-// if(ls==null){
-//     localStorage.setItem('ww_basic_crud', '');
-// }
-
 // const users = [
 //     {
 //         name: 'Marija',
@@ -59,13 +53,16 @@ btnUpdateUser.addEventListener('click', () => {
 
         if (Number(age.value)) {
 
+            let users = JSON.parse(localStorage.getItem('ww_basic_crud'));
+
             users[updateIdx].name = firstName.value;
             users[updateIdx].lastName = lastName.value;
             users[updateIdx].age = age.value;
             users[updateIdx].status = status.value;
 
+            localStorage.setItem('ww_basic_crud', JSON.stringify(users));
+
             btnUpdateUser.hidden = true;
-            btnCancelUser.hidden = true;
             btnAddUser.hidden = false;
 
             clearFields();
@@ -83,7 +80,6 @@ btnUpdateUser.addEventListener('click', () => {
 // close modal and reset buttons display settings
 btnCancelUser.addEventListener('click', () => {
     btnUpdateUser.hidden = true;
-    btnCancelUser.hidden = true;
     btnAddUser.hidden = false;
     clearFields();
 
@@ -92,7 +88,6 @@ btnCancelUser.addEventListener('click', () => {
 
 
 const clearFields = () => {
-
     firstName.value = '',
     lastName.value = '',
     age.value = '',
@@ -138,11 +133,11 @@ const readUser = () => {
 
     let ls = JSON.parse(localStorage.getItem('ww_basic_crud'));
 
-    if(ls==null){
+    if (ls == null) {
         localStorage.setItem('ww_basic_crud', JSON.stringify(''));
     }
 
-    if(ls !=''){
+    if (ls != '') {
 
         ls.forEach((user, idx) => {
             tableBody.innerHTML += `
@@ -158,7 +153,7 @@ const readUser = () => {
             `;
         });
 
-    }else{
+    } else {
         tableBody.innerHTML = `
             <h2 class ='fs-5 mt-3'>No users to show.</h2>
         `;
@@ -170,24 +165,28 @@ const updateUser = (idx) => {
 
     myModalLabel.innerHTML = 'Update user';
 
+    let users = JSON.parse(localStorage.getItem('ww_basic_crud'));
+
     firstName.value = users[idx].name,
     lastName.value = users[idx].lastName,
     age.value = users[idx].age,
     status.value = users[idx].status
 
     btnUpdateUser.hidden = false;
-    btnCancelUser.hidden = false;
     btnAddUser.hidden = true;
 
     updateIdx = idx;
-
 }
 
 // kako proslediti ime na klik sa template literals
 const deleteUser = (idx) => {
 
+    let users = JSON.parse(localStorage.getItem('ww_basic_crud'));
+
     if (confirm(`Are you sure you want to delete user ?`)) {
         users.splice(idx, 1);
+
+        localStorage.setItem('ww_basic_crud', JSON.stringify(users));
     }
 
     readUser();
