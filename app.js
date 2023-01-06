@@ -40,6 +40,13 @@ let updateIdx = null;
 
 // On load read content
 window.addEventListener('load', () => {
+
+    let ls = localStorage.getItem('ww_basic_crud');;
+
+    if (ls == null) {
+        ls = localStorage.setItem('ww_basic_crud', JSON.stringify(''));
+    }
+
     showUserCount();
     readUser();
 })
@@ -93,9 +100,9 @@ btnCancelUser.addEventListener('click', () => {
 
 const clearFields = () => {
     firstName.value = '',
-    lastName.value = '',
-    age.value = '',
-    status.value = ''
+        lastName.value = '',
+        age.value = '',
+        status.value = ''
 }
 
 
@@ -134,9 +141,9 @@ const createUser = () => {
 
 const readUser = () => {
     tableBody.innerHTML = '';
-    message.innerHTML ='';
+    message.innerHTML = '';
 
-    
+
     let ls = JSON.parse(localStorage.getItem('ww_basic_crud'));
     console.log(ls)
 
@@ -175,9 +182,9 @@ const updateUser = (idx) => {
     let users = JSON.parse(localStorage.getItem('ww_basic_crud'));
 
     firstName.value = users[idx].name,
-    lastName.value = users[idx].lastName,
-    age.value = users[idx].age,
-    status.value = users[idx].status
+        lastName.value = users[idx].lastName,
+        age.value = users[idx].age,
+        status.value = users[idx].status
 
     btnUpdateUser.hidden = false;
     btnAddUser.hidden = true;
